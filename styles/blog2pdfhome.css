@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: 'Roboto', sans-serif;
+    --default-background-color: #ccc;
+    --background-light: rgb(240, 240, 240);
+    --default-color: #333;
+    --primarycolor: #40739e;
+    --secondaryColor: rgba(255, 255, 255, 0.75);
+}
+
+body {
+    background-color: var(--default-background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+#home-header,
+#home-header .navlinks,
+#home-footer {
+    width: 100%;
+    background-color: var(--primarycolor);
+    color: var(--secondaryColor);
+}
+
+#home-header {
+    min-height: 25px;
+}
+
+.container {
+    max-width: 85vw !important;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#home-header .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.brand-logo {
+    font-family: 'Gugi', cursive;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+
+#nav-menu .navlinks {
+    text-decoration: none;
+}
+
+#nav-menu .navlinks:hover {
+    color: white;
+}
+
+#form-container {
+    background-color: white;
+    margin: 2rem auto;
+    padding: 2rem 5rem;
+    border-radius: 5px;
+    width: 950px;
+    line-height: 2rem;
+    font-size: 1.1rem;
+    height: 450px;
+}
+
+
+#form-header {
+    color: var(--primarycolor);
+    padding: 1rem;
+}
+
+#pdf-generator button {
+    padding: 1rem 3rem;
+    margin: 2rem 0.5rem;
+    color: white;
+    background-color: var(--primarycolor);
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#pdf-generator button:hover {
+    background-color: rgb(28, 51, 114);
+}
+
+
+#pdf-generator>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#formFeedback {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.success {
+    color: green;
+}
+
+.failed {
+    color: red;
+}
+
+#pdf-generator label {
+    width: 10%;
+    color: var(--primarycolor);
+}
+
+#pdf-generator input {
+    width: 100%;
+    padding: 1rem 0.75rem;
+    margin: 1rem;
+    outline: none;
+    background-color: var(--background-light);
+    border: none;
+}
+
+#home-footer {
+    padding: .5em;
+    line-height: 1.5rem;
+}
+
+#home-footer a {
+    color: var(--secondaryColor);
+    margin: .5rem;
+}
+
+#home-footer a:hover {
+    color: white;
+}

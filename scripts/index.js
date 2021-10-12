@@ -8,10 +8,24 @@ function handleError(e) {
 
 // function to call txtPaperApi
 async function convertAndSendMail(url, email) {
-  const baseEndPoint = 'https://txtpaper.com/api/v1/';
-  const res = await fetch(
-    `${baseEndPoint}?url=${url}&format=pdf&email=${email}`
-  ).catch(handleError);
+  const baseEndPoint = 'http://localhost:3333/generate-pdf/';
+  const fetchOptions = {
+      // Adding method type
+      // mode:'no-cors',
+      method: "POST",
+      // Adding body or contents to send
+      body: JSON.stringify({"url":url,"email":email,headers: {
+        "Content-type": "application/json"
+    }})
+    }
+
+    console.log(fetchOptions);
+    
+  // const res = await fetch(
+  //   `${baseEndPoint}?url=${url}&format=pdf&email=${email}`,
+  // ).catch(handleError);
+
+  const res = await fetch(baseEndPoint,fetchOptions).catch(handleError);
 
   // Code to userfeedback .
   formFeedback.insertAdjacentHTML(

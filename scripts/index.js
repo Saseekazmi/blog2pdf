@@ -3,7 +3,7 @@ const formFeedback = convertForm.querySelector('#formFeedback');
 
 // this can be written as utility function to handle all error cases and moved to separate module in future.
 function handleError(e) {
-  console.log(e);
+  throw new Error(e);
 }
 
 // function to call txtPaperApi
@@ -18,39 +18,33 @@ async function convertAndSendMail(url, email) {
         "Content-type": "application/json"
     }})
     }
-
-    console.log(fetchOptions);
-    
-  // const res = await fetch(
-  //   `${baseEndPoint}?url=${url}&format=pdf&email=${email}`,
-  // ).catch(handleError);
-
   const res = await fetch(baseEndPoint,fetchOptions).catch(handleError);
 
   // Code to userfeedback.
-  formFeedback.innerHTML = `<span class =${res ? 'success' : 'failed'}>Sending mail to ${email} is ${
-    res
-      ? 'successfull, Please check the mail'
-      : 'failed, Sorry for any inconvinience caused.'
-  }</span>`;
-
-  
-  // formFeedback.insertAdjacentHTML(
-  //   'afterbegin',
-  //   `<span class =${res ? 'success' : 'failed'}>Sending mail to ${email} is ${
-  //     res
-  //       ? 'successfull, Please check the mail'
-  //       : 'failed, Sorry for any inconvinience caused.'
-  //   }</span>`
-  // );
+  const responseStatus = (res&&res.ok&&res.status==200)?'success' : 'failed';
+  formFeedback.innerHTML = `<span class =${responseStatus}>
+                            Sending mail to ${email} is${responseStatus ==='success'? 'successfull, Please check the mail': 'failed, Sorry for any inconvinience caused.'}
+                            </span>`;
 }
-function handleSubmit(e) {
+function handleBtnClick(e) {
+  //preventing form defaults 
   e.preventDefault();
   const [email, urlAddress] = [
-    e.currentTarget.email.value,
-    e.currentTarget.blogAddress.value,
+    e.currentTarget.email,
+    e.currentTarget.blogAddress,
   ];
-  convertAndSendMail(urlAddress, email);
+  //Delegating form button click events 
+  switch(e.type){
+    case 'submit':convertAndSendMail(urlAddress.value, email.value);
+                  break;
+    case 'reset':email.value=null;
+                 urlAddress.value=null;
+                break;
+    default: throw new Error('Invalid event triggered'+e.type);
+  }
 }
 
-convertForm.addEventListener('submit', handleSubmit);
+//Submit event listner
+convertForm.addEventListener('submit', handleBtnClick);
+//Reset event listner
+convertForm.addEventListener('reset', handleBtnClick);

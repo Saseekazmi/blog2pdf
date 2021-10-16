@@ -126,7 +126,7 @@ body {
 }
 
 #pdf-generator input {
-    width: 100%;
+    width: 90%;
     padding: 1.25rem 0.75rem;
     margin: 1rem;
     outline: none;
@@ -175,6 +175,10 @@ body {
     #pdf-generator label {
         width: 100%;
         text-align: justify;
+    }
+
+    #pdf-generator input {
+        width: 100%;
     }
 
     #pdf-generator button {

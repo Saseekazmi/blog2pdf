@@ -27,15 +27,22 @@ async function convertAndSendMail(url, email) {
 
   const res = await fetch(baseEndPoint,fetchOptions).catch(handleError);
 
-  // Code to userfeedback .
-  formFeedback.insertAdjacentHTML(
-    'afterbegin',
-    `<span class =${res ? 'success' : 'failed'}>Sending mail to ${email} is ${
-      res
-        ? 'successfull, Please check the mail'
-        : 'failed, Sorry for any inconvinience caused.'
-    } </span>`
-  );
+  // Code to userfeedback.
+  formFeedback.innerHTML = `<span class =${res ? 'success' : 'failed'}>Sending mail to ${email} is ${
+    res
+      ? 'successfull, Please check the mail'
+      : 'failed, Sorry for any inconvinience caused.'
+  }</span>`;
+
+  
+  // formFeedback.insertAdjacentHTML(
+  //   'afterbegin',
+  //   `<span class =${res ? 'success' : 'failed'}>Sending mail to ${email} is ${
+  //     res
+  //       ? 'successfull, Please check the mail'
+  //       : 'failed, Sorry for any inconvinience caused.'
+  //   }</span>`
+  // );
 }
 function handleSubmit(e) {
   e.preventDefault();

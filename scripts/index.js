@@ -11,19 +11,19 @@ async function convertAndSendMail(url, email) {
   const baseEndPoint = 'http://localhost:3333/generate-pdf/';
   const fetchOptions = {
       // Adding method type
-      // mode:'no-cors',
       method: "POST",
       // Adding body or contents to send
-      body: JSON.stringify({"url":url,"email":email,headers: {
-        "Content-type": "application/json"
-    }})
+      body: JSON.stringify({url,email}),
+      headers: {"Content-Type": "application/json"}
     }
+
   const res = await fetch(baseEndPoint,fetchOptions).catch(handleError);
 
-  // Code to userfeedback.
+
+  //Userfeedback codes.
   const responseStatus = (res&&res.ok&&res.status==200)?'success' : 'failed';
   formFeedback.innerHTML = `<span class =${responseStatus}>
-                            Sending mail to ${email} is${responseStatus ==='success'? 'successfull, Please check the mail': 'failed, Sorry for any inconvinience caused.'}
+                            Sending mail to ${email} is ${responseStatus ==='success'? 'successfull, Please check the mail.': 'failed, Sorry for any inconvinience caused.'}
                             </span>`;
 }
 function handleBtnClick(e) {
@@ -33,6 +33,7 @@ function handleBtnClick(e) {
     e.currentTarget.email,
     e.currentTarget.blogAddress,
   ];
+  
   //Delegating form button click events 
   switch(e.type){
     case 'submit':convertAndSendMail(urlAddress.value, email.value);

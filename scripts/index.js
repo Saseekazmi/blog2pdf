@@ -10,22 +10,25 @@ function handleError(e) {
 async function convertAndSendMail(url, email) {
   const baseEndPoint = 'http://localhost:3333/generate-pdf/';
   const fetchOptions = {
-      // Adding method type
-      method: "POST",
-      // Adding body or contents to send
-      body: JSON.stringify({url,email}),
-      headers: {"Content-Type": "application/json"}
+    // Adding method type
+    method: "POST",
+    // Adding body or contents to send
+    body: JSON.stringify({
+      url,
+      email
+    }),
+    headers: {
+      "Content-Type": "application/json"
     }
+  }
 
-  const res = await fetch(baseEndPoint,fetchOptions).catch(handleError);
-
+  const res = await fetch(baseEndPoint, fetchOptions).catch(handleError);
 
   //Userfeedback codes.
-  const responseStatus = (res&&res.ok&&res.status==200)?'success' : 'failed';
-  formFeedback.innerHTML = `<span class =${responseStatus}>
-                            Sending mail to ${email} is ${responseStatus ==='success'? 'successfull, Please check the mail.': 'failed, Sorry for any inconvinience caused.'}
-                            </span>`;
+  const responseStatus = (res && res.ok && res.status == 200) ? 'success' : 'failed';
+  formFeedback.innerHTML = `<span class =${responseStatus}>Sending mail to ${email} is ${responseStatus ==='success'? 'successfull, Please check the mail.': 'failed, Sorry for any inconvinience caused.'} </span>`;
 }
+
 function handleBtnClick(e) {
   //preventing form defaults 
   e.preventDefault();
@@ -33,15 +36,18 @@ function handleBtnClick(e) {
     e.currentTarget.email,
     e.currentTarget.blogAddress,
   ];
-  
+
   //Delegating form button click events 
-  switch(e.type){
-    case 'submit':convertAndSendMail(urlAddress.value, email.value);
-                  break;
-    case 'reset':email.value=null;
-                 urlAddress.value=null;
-                break;
-    default: throw new Error('Invalid event triggered'+e.type);
+  switch (e.type) {
+    case 'submit':
+      convertAndSendMail(urlAddress.value, email.value);
+      break;
+    case 'reset':
+      email.value = null;
+      urlAddress.value = null;
+      break;
+    default:
+      throw new Error('Invalid event triggered' + e.type);
   }
 }
 

@@ -35,11 +35,11 @@ body {
 }
 
 #home-header {
-    min-height: 25px;
+    min-height: 30px;
 }
 
 .container {
-    max-width: 85vw;
+    max-width: 90vw;
     margin: 0 auto;
     text-align: center;
 }
@@ -70,12 +70,12 @@ body {
 #form-container {
     background-color: white;
     margin: 2rem auto;
-    padding: 2rem 5rem;
+    padding: 3rem 5rem;
     border-radius: 5px;
-    min-width: 700px;
+    min-width: 720px;
+    min-height: 450px;
     line-height: 2rem;
     font-size: 1.1rem;
-    height: 450px;
 }
 
 #form-header {
@@ -83,27 +83,29 @@ body {
     padding: 1rem 0.5rem;
 }
 
-#pdf-generator button {
-    padding: 1.2rem 3rem;
-    margin: 2rem 0.5rem;
-    color: white;
-    background-color: var(--primarycolor);
-    border-radius: 5px;
+#form-input-container {
+    margin: 2rem auto;
+}
+
+#form-input-container>div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#form-input-container label {
+    color: var(--primarycolor);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+#form-input-container input {
+    width: 100%;
+    margin: 0.75rem 0;
+    padding: 1.5rem 1rem;
     outline: none;
     border: none;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-#pdf-generator button:hover {
-    background-color: rgb(28, 51, 114);
-}
-
-#pdf-generator>div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    background-color: var(--background-light);
 }
 
 #formFeedback {
@@ -119,20 +121,40 @@ body {
     color: red;
 }
 
-#pdf-generator label {
-    color: var(--primarycolor);
-    font-size: 1.1rem;
-    width: 10%;
-}
-
-#pdf-generator input {
-    width: 90%;
-    padding: 1.25rem 0.75rem;
-    margin: 1rem;
+#form-btns button {
     outline: none;
-    background-color: var(--background-light);
     border: none;
 }
+
+#submit {
+    display: block;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1.2rem 4rem;
+    background-color: var(--primarycolor);
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+#reset {
+    background-color: inherit;
+    color: darkgray;
+}
+
+#submit:hover {
+    background-color: rgb(28, 51, 114);
+}
+
+#reset:hover {
+    color: var(--default-color);
+}
+
+#form-btns i {
+    margin-right: 5px;
+}
+
 
 #home-footer {
     padding: .5em;
@@ -148,44 +170,18 @@ body {
     color: white;
 }
 
-@media (max-width:760px) {
+@media (max-width:780px) {
     .container {
         max-width: 100%;
     }
 
     #form-container {
         min-width: initial;
+        line-height: initial;
+        font-size: 1rem;
         margin: 1rem 0.75rem;
         padding: 2rem;
         height: auto;
-        font-size: 1rem;
-        line-height: initial;
-    }
-
-    #pdf-generator {
-        padding: 2rem 1rem;
-    }
-
-    #pdf-generator>div {
-        flex-direction: column;
-        text-align: left;
-        padding: 0.5rem;
-    }
-
-    #pdf-generator label {
-        width: 100%;
-        text-align: justify;
-    }
-
-    #pdf-generator input {
-        width: 100%;
-    }
-
-    #pdf-generator button {
-        box-sizing: border-box;
-        display: block;
-        width: 100%;
-        margin: 1rem 0;
     }
 }
 

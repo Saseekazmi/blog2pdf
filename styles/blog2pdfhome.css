@@ -188,7 +188,7 @@ body {
 @media (max-width:420px) {
     #form-container {
         padding: 2rem 1rem;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .screen-line-break {

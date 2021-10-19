@@ -18,11 +18,11 @@
 }
 
 body {
-    background-color: var(--default-background-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    background-color: var(--default-background-color);
     min-height: 100vh;
 }
 
@@ -85,11 +85,6 @@ body {
 
 #form-input-container {
     margin: 2rem auto;
-}
-
-#form-input-container>div {
-    display: flex;
-    flex-direction: column;
     text-align: left;
 }
 
@@ -103,8 +98,8 @@ body {
     width: 100%;
     margin: 0.75rem 0;
     padding: 1.5rem 1rem;
-    outline: none;
     border: none;
+    outline: none;
     background-color: var(--background-light);
 }
 
@@ -154,7 +149,6 @@ body {
 #form-btns i {
     margin-right: 5px;
 }
-
 
 #home-footer {
     padding: .5em;

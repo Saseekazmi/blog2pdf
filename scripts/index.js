@@ -8,15 +8,12 @@ function handleError(e) {
 
 // function to call txtPaperApi
 async function convertAndSendMail(url, email) {
-  const baseEndPoint = 'http://localhost:3333/generate-pdf/';
+  const baseEndPoint = '/.netlify/functions/convertpage';
   const fetchOptions = {
     // Adding method type
     method: "POST",
     // Adding body or contents to send
-    body: JSON.stringify({
-      url,
-      email
-    }),
+    body: JSON.stringify({url, email}),
     headers: {
       "Content-Type": "application/json"
     }

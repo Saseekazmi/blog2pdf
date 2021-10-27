@@ -119,6 +119,7 @@ body {
 #form-btns button {
     outline: none;
     border: none;
+    cursor: pointer;
 }
 
 #submit {

@@ -23,7 +23,7 @@ async function convertAndSendMail(url, email) {
 
   //Userfeedback codes.
   const responseStatus = (res && res.ok && res.status == 200) ? 'success' : 'failed';
-  formFeedback.innerHTML = `<span class =${responseStatus}>Sending mail to ${email} is ${responseStatus ==='success'? 'successfull, Please check the mail.': 'failed, Sorry for any inconvinience caused.'} </span>`;
+  formFeedback.innerHTML = `<span class =${responseStatus}>Sending mail to ${email} is ${responseStatus ==='success'? 'successful, Please check the mail.': 'failed, Sorry for any inconvinience caused.'} </span>`;
 }
 
 function handleBtnClick(e) {
@@ -42,6 +42,7 @@ function handleBtnClick(e) {
     case 'reset':
       email.value = null;
       urlAddress.value = null;
+      formFeedback.innerHTML=null;
       break;
     default:
       throw new Error('Invalid event triggered' + e.type);

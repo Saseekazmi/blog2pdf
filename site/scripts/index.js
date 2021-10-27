@@ -8,15 +8,12 @@ function handleError(e) {
 
 // function to call txtPaperApi
 async function convertAndSendMail(url, email) {
-  const baseEndPoint = 'http://localhost:3333/generate-pdf/';
+  const baseEndPoint = '/.netlify/functions/convertpage';
   const fetchOptions = {
     // Adding method type
     method: "POST",
     // Adding body or contents to send
-    body: JSON.stringify({
-      url,
-      email
-    }),
+    body: JSON.stringify({url, email}),
     headers: {
       "Content-Type": "application/json"
     }
@@ -26,7 +23,7 @@ async function convertAndSendMail(url, email) {
 
   //Userfeedback codes.
   const responseStatus = (res && res.ok && res.status == 200) ? 'success' : 'failed';
-  formFeedback.innerHTML = `<span class =${responseStatus}>Sending mail to ${email} is ${responseStatus ==='success'? 'successfull, Please check the mail.': 'failed, Sorry for any inconvinience caused.'} </span>`;
+  formFeedback.innerHTML = `<span class =${responseStatus}>Sending mail to ${email} is ${responseStatus ==='success'? 'successful, Please check the mail.': 'failed, Sorry for any inconvinience caused.'} </span>`;
 }
 
 function handleBtnClick(e) {
@@ -45,6 +42,7 @@ function handleBtnClick(e) {
     case 'reset':
       email.value = null;
       urlAddress.value = null;
+      formFeedback.innerHTML=null;
       break;
     default:
       throw new Error('Invalid event triggered' + e.type);

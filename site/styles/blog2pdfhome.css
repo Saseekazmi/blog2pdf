@@ -65,7 +65,9 @@ body {
   text-decoration: none;
 }
 
-#nav-menu .navlinks:hover {
+#nav-menu .navlinks:hover,
+#nav-menu .navlinks:focus {
+  outline: none;
   color: white;
 }
 
@@ -107,6 +109,7 @@ body {
 }
 
 #form-input-container input:focus {
+  outline: none;
   border: 1px solid var(--primary-color-dark);
 }
 
@@ -175,7 +178,9 @@ body {
 }
 
 #home-footer .profile-link:hover,
-.profile-link:focus-within {
+#home-footer .profile-link:focus {
+  outline: none;
+  font-size: 1.1em;
   color: white;
 }
 

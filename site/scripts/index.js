@@ -1,5 +1,6 @@
-const convertForm = document.querySelector('#pdf-generator');
-const formFeedback = convertForm.querySelector('#formFeedback');
+const convertForm = document.querySelector("#pdf-generator");
+const formFeedback = convertForm.querySelector("#formFeedback");
+const submitBtn = convertForm.querySelector("#submit");
 
 // this can be written as utility function to handle all error cases and moved to separate module in future.
 function handleError(e) {
@@ -8,48 +9,56 @@ function handleError(e) {
 
 // function to call txtPaperApi
 async function convertAndSendMail(url, email) {
-  const baseEndPoint = '/.netlify/functions/convertpage';
+  const baseEndPoint = "/.netlify/functions/convertpage";
   const fetchOptions = {
     // Adding method type
     method: "POST",
     // Adding body or contents to send
-    body: JSON.stringify({url, email}),
+    body: JSON.stringify({ url, email }),
     headers: {
-      "Content-Type": "application/json"
-    }
-  }
+      "Content-Type": "application/json",
+    },
+  };
 
+  //disabling submit button
+  submitBtn.disable = true;
+  submitBtn.classList.add("loading");
   const res = await fetch(baseEndPoint, fetchOptions).catch(handleError);
 
   //Userfeedback codes.
-  const responseStatus = (res && res.ok && res.status == 200) ? 'success' : 'failed';
-  formFeedback.innerHTML = `<span class =${responseStatus}>Sending mail to ${email} is ${responseStatus ==='success'? 'successful, Please check the mail.': 'failed, Sorry for any inconvinience caused.'} </span>`;
+  const responseStatus = res && res.ok && res.status == 200 ? "success" : "failed";
+  formFeedback.innerHTML = `<span class =${responseStatus}>Sending mail to ${email} is ${
+    responseStatus === "success"
+      ? "successful, Please check the mail."
+      : "failed, Sorry for any inconvinience caused."
+  } </span>`;
+
+  //enablin submit button
+  submitBtn.disable = false;
+  submitBtn.classList.remove("loading");
 }
 
 function handleBtnClick(e) {
-  //preventing form defaults 
+  //preventing form defaults
   e.preventDefault();
-  const [email, urlAddress] = [
-    e.currentTarget.email,
-    e.currentTarget.blogAddress,
-  ];
+  const [email, urlAddress] = [e.currentTarget.email, e.currentTarget.blogAddress];
 
-  //Delegating form button click events 
+  //Delegating form button click events
   switch (e.type) {
-    case 'submit':
+    case "submit":
       convertAndSendMail(urlAddress.value, email.value);
       break;
-    case 'reset':
+    case "reset":
       email.value = null;
       urlAddress.value = null;
-      formFeedback.innerHTML=null;
+      formFeedback.innerHTML = null;
       break;
     default:
-      throw new Error('Invalid event triggered' + e.type);
+      throw new Error("Invalid event triggered" + e.type);
   }
 }
 
 //Submit event listner
-convertForm.addEventListener('submit', handleBtnClick);
+convertForm.addEventListener("submit", handleBtnClick);
 //Reset event listner
-convertForm.addEventListener('reset', handleBtnClick);
+convertForm.addEventListener("reset", handleBtnClick);

@@ -139,7 +139,7 @@ body {
 }
 
 #submit.loading > .loader {
-  display: block;
+  display: inline-block;
 }
 #submit.loading > .submitBtnTxt {
   display: none;

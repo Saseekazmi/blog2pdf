@@ -13,6 +13,7 @@
   --default-background-color: #ccc;
   --background-light: rgb(240, 240, 240);
   --default-color: #333;
+
   --primary-color: #40739e;
   --primary-color-dark: #0d5292;
   --secondary-color: rgba(255, 255, 255, 0.75);
@@ -142,6 +143,17 @@ body {
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
+}
+
+#submit .loader {
+  display: none;
+}
+
+#submit.loading > .loader {
+  display: inline-block;
+}
+#submit.loading > .submitBtnTxt {
+  display: none;
 }
 
 #reset {

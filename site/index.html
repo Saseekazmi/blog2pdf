@@ -16,6 +16,7 @@
     <meta name="google-site-verification" content="OO6S-lhILR_KGt1cNYdKSa2VySo87WknKfqywS5rpMs" />
     <script src="https://kit.fontawesome.com/5644698a1f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/blog2pdfhome.css">
+    <link rel="stylesheet" href="./styles/loader.css">
 </head>
 
 <body>
@@ -53,8 +54,17 @@
                     <div id="formFeedback">
                     </div>
                     <div id="form-btns">
-                        <button id="submit" type="submit"><i class="fas fa-paper-plane"></i> Send Mail </button>
+                        <button id="submit" type="submit">
+                            <span class="submitBtnTxt"><i class="fas fa-paper-plane"></i> Send Mail</span>
+                            <span class="loader lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </span>
+                        </button>
                         <button id="reset" type="reset"><i class="fa fa-refresh" aria-hidden="true"></i> Reset</button>
+
                     </div>
 
                 </form>
